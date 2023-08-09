@@ -21,22 +21,25 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CampController {
 
-    private String Gang = "강원도";
 
     @Autowired
     private CampService campService;
 
+    // 전체 출력
     @GetMapping("/campAllList")
     public String CampList(Model model) {
         List<Camp> campList = campService.getAllCampList();
-        System.out.println("camp facltNm: " + campList.toString());
+        System.out.println("camp facltNm: " + campList.get(4).toString());
 
         return campList.toString();
     }
 
+    // 지역별 출력
+    // /campList/지역코드
     @GetMapping("/campList/{DoNm}")
-    public String CampDONmList(@PathVariable("DoNm") int doNm) throws UnsupportedEncodingException {
+    public List<Camp> CampDONmList(@PathVariable("DoNm") int doNm) throws UnsupportedEncodingException {
 
+        // 지역 코드
         String test = "";
         switch(doNm){
             case 1 : test = "강원도"; break;
@@ -53,7 +56,7 @@ public class CampController {
             case 12 : test = "충청북도"; break;
         }
         List<Camp> campList = campService.getDoNmCampList(test);
-        return campList.toString();
+        return campList;
     }
 
 }
