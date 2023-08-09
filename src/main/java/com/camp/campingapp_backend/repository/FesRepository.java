@@ -1,4 +1,7 @@
 package com.camp.campingapp_backend.repository;
 
-public interface FesRepository {
+import com.camp.campingapp_backend.entity.FesEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface FesRepository extends JpaRepository<FesEntity,Integer> {
 }

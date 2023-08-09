@@ -7,9 +7,7 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
-
-public class FesDTO {
-
-    private Long fesId;
+public class ShopDTO {
+    private Long shopId;
 
 }

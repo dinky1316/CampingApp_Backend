@@ -32,11 +32,11 @@ public class TourEntity {
     @Column(columnDefinition = "text")
     private String addr2;
 
-    @Column(name = "x")
-    private double x;
+    @Column(name = "lat")
+    private double lat;
 
-    @Column(name = "y")
-    private double y;
+    @Column(name = "lnt")
+    private double lnt;
 
     @Column(columnDefinition = "text")
     private String Convenience;

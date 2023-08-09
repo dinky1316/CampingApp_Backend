@@ -6,9 +6,6 @@ import java.util.List;
 
 public interface TourService {
 
-
-
-
     public List<TourEntity> getAllTourList();
     public TourEntity getTour(int tourid);
 
