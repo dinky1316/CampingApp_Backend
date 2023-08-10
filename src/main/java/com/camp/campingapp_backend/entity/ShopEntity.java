@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Table(name = "shop")
 public class ShopEntity {
 
-    @Id @Column(name = "shopId")
+    @Id  @Column(name = "shopId")
     private int shopId;
 
     @Column(columnDefinition = "text")
@@ -30,12 +30,13 @@ public class ShopEntity {
     @Column(columnDefinition = "text")
     private String addr;
 
-
+    @Column(name = "lat")
     private double lat;
 
-
+    @Column(name = "lnt")
     private double lnt;
 
     @Column(columnDefinition = "text")
     private String info;
+
 }
