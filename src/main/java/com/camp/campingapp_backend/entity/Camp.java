@@ -23,7 +23,7 @@ public class Camp {
     private String facltNm;
     @Column(columnDefinition = "text")
     private String lineIntro;
-    @Column(length = 5000)
+    @Column(columnDefinition = "text")
     private String intro;
     private int allar;
     @Column(columnDefinition = "text")
