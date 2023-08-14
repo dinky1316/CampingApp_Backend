@@ -19,8 +19,8 @@ import javax.persistence.Table;
 
 public class FesEntity {
     @Id
-    @Column(name = "fesId")
-    private int fesId;
+    @Column(name = "fesno")
+    private int fesno;
 
     @Column(columnDefinition = "text")
     private String fesname;
@@ -43,6 +43,9 @@ public class FesEntity {
 
     @Column(columnDefinition = "text")
     private String pageaddr;
+
+    @Column(columnDefinition = "text")
+    private String firstImageUrl;
 
     @Column(name = "lat")
     private double lat;
