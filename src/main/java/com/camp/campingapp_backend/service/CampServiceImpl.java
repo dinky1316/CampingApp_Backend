@@ -13,15 +13,6 @@ public class CampServiceImpl implements CampService {
     @Autowired
     private CampRepository campRepository;
 
-//    @Override
-//    public List<String> getAllCampList() {
-//        List<String> campList = campRepository.findCampList();
-//        for (int i = 1; i < campList.size(); i++) {
-//
-//            System.out.println("Service camp facltNm: " + campList.get(i));
-//        }
-//        return campList;
-//    }
     @Override
     public List<Camp> getAllCampList() {
         List<Camp> campList = campRepository.findAll();

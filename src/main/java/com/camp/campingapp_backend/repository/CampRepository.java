@@ -12,10 +12,5 @@ import java.util.List;
 public interface CampRepository extends JpaRepository<Camp, Integer> {
 
     List<Camp> findByDoNm(String DoNm);
-    Camp findByAddr1(String Addr1);
-
-    @Query("select m.facltNm from Camp m")
-    List<String> findCampList();
-
 
 }
