@@ -135,8 +135,8 @@ public class Camp {
     private int fireSensorCo;
     @Column(columnDefinition = "text")
     private String themaEnvrnCl;
-    @Column(columnDefinition = "text")
-    private String animal_cmg_cl;
+    @Column(name = "animal_cmg_cl", columnDefinition = "text")
+    private String animal;
     @Column(columnDefinition = "text")
     private String tourEraCl;
     @Column(columnDefinition = "text")

@@ -1,62 +1,102 @@
 package com.camp.campingapp_backend.controller;
 
-import com.camp.campingapp_backend.dto.CampDto;
 import com.camp.campingapp_backend.entity.Camp;
 import com.camp.campingapp_backend.service.CampService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/camp")
 @RequiredArgsConstructor
 public class CampController {
 
-
     @Autowired
     private CampService campService;
 
-    // 전체 출력
-    @GetMapping("/campAllList")
-    public String CampList(Model model) {
-        List<Camp> campList = campService.getAllCampList();
-        System.out.println("camp facltNm: " + campList.get(4).toString());
+    // 지역별 출력
+    @GetMapping("/campList/{DoNm}")
+    public List<Camp> CampDONmList(@PathVariable("DoNm") int doNm) {
 
+        // 지역 코드
+        String doName = "";
+        switch(doNm){
+            case 1 : doName = "강원도"; break;
+            case 2 : doName = "경기도"; break;
+            case 3 : doName = "경상남도"; break;
+            case 4 : doName = "경상북도"; break;
+            case 5 : doName = "대구시"; break;
+            case 6 : doName = "서울시"; break;
+            case 7 : doName = "인천시"; break;
+            case 8 : doName = "전라남도"; break;
+            case 9 : doName = "전라북도"; break;
+            case 10 : doName = "제주도"; break;
+            case 11 : doName = "충청남도"; break;
+            case 12 : doName = "충청북도"; break;
+        }
+        List<Camp> campList = campService.getDoNmCampList(doName);
+        return campList;
+    }
+
+    // 동물 가능
+    @GetMapping("/campPetList")
+    public String CampPetList() {
+        List<Camp> campList = campService.getPetCampList("불");
         return campList.toString();
     }
 
-    // 지역별 출력
-    // /campList/지역코드
-    @GetMapping("/campList/{DoNm}")
-    public List<Camp> CampDONmList(@PathVariable("DoNm") int doNm) throws UnsupportedEncodingException {
-
-        // 지역 코드
-        String test = "";
-        switch(doNm){
-            case 1 : test = "강원도"; break;
-            case 2 : test = "경기도"; break;
-            case 3 : test = "경상남도"; break;
-            case 4 : test = "경상북도"; break;
-            case 5 : test = "대구시"; break;
-            case 6 : test = "서울시"; break;
-            case 7 : test = "인천시"; break;
-            case 8 : test = "전라남도"; break;
-            case 9 : test = "전라북도"; break;
-            case 10 : test = "제주도"; break;
-            case 11 : test = "충청남도"; break;
-            case 12 : test = "충청북도"; break;
+    // 캠핑 종류별
+    @GetMapping("/campIndutyList/{induty}")
+    public String CampIndutyList(@PathVariable("induty")int induty) {
+        String camp = "";
+        switch(induty){
+            case 1 : camp = "글램핑"; break;
+            case 2 : camp = "일반야영장"; break;
+            case 3 : camp = "자동차야영장"; break;
+            case 4 : camp = "카라반"; break;
         }
-        List<Camp> campList = campService.getDoNmCampList(test);
-        return campList;
+        List<Camp> campList = campService.getCampListInduty(camp);
+        return campList.toString();
+    }
+
+    // 캠핑 종류별 + 검색
+    @GetMapping("/searchCamp/{induty}/{facltNm}")
+    public String searchCamp(@PathVariable("induty")int induty,@PathVariable("facltNm")String facltNm) {
+        String camp = "";
+        switch(induty){
+            case 1 : camp = "글램핑"; break;
+            case 2 : camp = "일반야영장"; break;
+            case 3 : camp = "자동차야영장"; break;
+            case 4 : camp = "카라반"; break;
+        }
+        List<Camp> campList = campService.getCampListSearch(camp,facltNm);
+        return campList.toString();
+    }
+    
+    // 캠핑 종류별 + 지역별
+    @GetMapping("/campIndSig/{induty}/{sigunguNm}")
+    public String CampIndutySigList(@PathVariable("induty")int induty,@PathVariable("sigunguNm")String sigunguNm) {
+        String camp = "";
+        switch(induty){
+            case 1 : camp = "글램핑"; break;
+            case 2 : camp = "일반야영장"; break;
+            case 3 : camp = "자동차야영장"; break;
+            case 4 : camp = "카라반"; break;
+        }
+        List<Camp> campList = campService.getcampListIndutyAndSig(camp,sigunguNm);
+        return campList.toString();
+    }
+
+    // 애완동물 가능 + 지역별
+    @GetMapping("/campPetSig/{sigunguNm}")
+    public String CampPetSigList(@PathVariable("sigunguNm") String sigunguNm) {
+        List<Camp> campList = campService.getcampListPetAndSig("불",sigunguNm);
+        System.out.println(campList.size());
+        return campList.toString();
     }
 
 }

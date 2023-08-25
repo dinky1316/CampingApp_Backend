@@ -87,7 +87,7 @@ public class CampDto {
     private String themaEnvrnCl;
     private String eqpmnLendCl;
     @Column(columnDefinition = "text")
-    private String animal_cmg_cl;
+    private String animal;
     private String tourEraCl;
     private String firstImageUrl;
     private String createdtime;

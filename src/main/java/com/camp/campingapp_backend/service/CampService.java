@@ -12,8 +12,16 @@ import java.util.Optional;
 
 public interface CampService {
 
-    public List<Camp> getAllCampList();
-
     public List<Camp> getDoNmCampList(String DoNm);
+
+    public List<Camp> getPetCampList(String Pet);
+
+    public List<Camp> getCampListInduty(String induty);
+
+    public List<Camp> getCampListSearch(String induty, String facltNm);
+
+    public List<Camp> getcampListIndutyAndSig(String induty, String sigunguNm);
+
+    public List<Camp> getcampListPetAndSig(String animal, String sigunguNm);
 
 }
