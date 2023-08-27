@@ -20,8 +20,8 @@ public interface CampService {
 
     public List<Camp> getCampListSearch(String induty, String facltNm);
 
-    public List<Camp> getcampListIndutyAndSig(String induty, String sigunguNm);
+    public List<Camp> getcampListIndutyAndSig(String induty,String donm, String sigunguNm);
 
-    public List<Camp> getcampListPetAndSig(String animal, String sigunguNm);
+    public List<Camp> getcampListPetAndSig(String animal,String donm, String sigunguNm);
 
 }

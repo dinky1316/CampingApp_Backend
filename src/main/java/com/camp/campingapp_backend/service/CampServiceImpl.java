@@ -42,14 +42,14 @@ public class CampServiceImpl implements CampService {
     }
 
     @Override
-    public List<Camp> getcampListIndutyAndSig(String induty, String sigunguNm) {
-        List<Camp> campList = campRepository.findByIndutyContainsAndSigunguNm(induty, sigunguNm);
+    public List<Camp> getcampListIndutyAndSig(String induty,String donm, String sigunguNm) {
+        List<Camp> campList = campRepository.findByIndutyContainsAndDoNmAndSigunguNm(induty,donm, sigunguNm);
         return campList;
     }
 
     @Override
-    public List<Camp> getcampListPetAndSig(String animal, String sigunguNm) {
-        List<Camp> campList = campRepository.findByAnimalNotContainsAndSigunguNm(animal, sigunguNm);
+    public List<Camp> getcampListPetAndSig(String animal,String donm, String sigunguNm) {
+        List<Camp> campList = campRepository.findByAnimalNotContainsAndDoNmAndSigunguNm(animal,donm, sigunguNm);
         return campList;
     }
 

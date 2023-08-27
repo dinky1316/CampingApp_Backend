@@ -21,8 +21,8 @@ public interface CampRepository extends JpaRepository<Camp, Integer> {
     List<Camp> findByIndutyContainsAndFacltNmContains(String induty, String facltNm);
 
     // 종류별 + 지역
-    List<Camp> findByIndutyContainsAndSigunguNm(String induty, String sigunguNm);
+    List<Camp> findByIndutyContainsAndDoNmAndSigunguNm(String induty,String donm, String sigunguNm);
 
     // 동물가능 + 지역
-    List<Camp> findByAnimalNotContainsAndSigunguNm(String animal, String sigunguNm);
+    List<Camp> findByAnimalNotContainsAndDoNmAndSigunguNm(String animal,String donm, String sigunguNm);
 }

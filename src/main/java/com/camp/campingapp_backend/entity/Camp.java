@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class Camp {
 
     @Id
-    private int content_id;
+    private int contentId;
     @Column(columnDefinition = "text")
     private String facltNm;
     @Column(columnDefinition = "text")
@@ -73,7 +73,7 @@ public class Camp {
     private String resveCl;
     private int manageNmpr;
     private int gnrlSiteCo;
-    private int auto_site_co;
+    private int autoSiteCo;
     private int glampSiteCo;
     private int caravSiteCo;
     private int indvdlCaravSiteCo;
@@ -135,7 +135,7 @@ public class Camp {
     private int fireSensorCo;
     @Column(columnDefinition = "text")
     private String themaEnvrnCl;
-    @Column(name = "animal_cmg_cl", columnDefinition = "text")
+    @Column(name = "animalCmgCl", columnDefinition = "text")
     private String animal;
     @Column(columnDefinition = "text")
     private String tourEraCl;
