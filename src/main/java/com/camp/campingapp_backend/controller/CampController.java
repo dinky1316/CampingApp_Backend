@@ -4,6 +4,7 @@ import com.camp.campingapp_backend.entity.Camp;
 import com.camp.campingapp_backend.service.CampService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +38,11 @@ public class CampController {
             case 10 : doName = "제주도"; break;
             case 11 : doName = "충청남도"; break;
             case 12 : doName = "충청북도"; break;
+            case 13 : doName = "광주시"; break;
+            case 14 : doName = "세종시"; break;
+            case 15 : doName = "대구시"; break;
+            case 16 : doName = "대전시"; break;
+            case 17 : doName = "울산시"; break;
         }
         List<Camp> campList = campService.getDoNmCampList(doName);
         return campList;
@@ -105,6 +111,11 @@ public class CampController {
             case 10 : doName = "제주도"; break;
             case 11 : doName = "충청남도"; break;
             case 12 : doName = "충청북도"; break;
+            case 13 : doName = "광주시"; break;
+            case 14 : doName = "세종시"; break;
+            case 15 : doName = "대구시"; break;
+            case 16 : doName = "대전시"; break;
+            case 17 : doName = "울산시"; break;
         }
 
         List<Camp> campList = campService.getcampListIndutyAndSig(camp,doName,sigunguNm);
@@ -113,7 +124,8 @@ public class CampController {
 
     // 애완동물 가능 + 지역별 + 세부 지역별
     @GetMapping("/campPetSig/{donm}/{sigunguNm}")
-    public String CampPetSigList(@PathVariable("donm") int donm, @PathVariable("sigunguNm") String sigunguNm) {
+//    public String CampPetSigList(@PathVariable("donm") int donm, @PathVariable("sigunguNm") int sigunguNm) {
+        public ResponseEntity<List<Camp>> CampPetSigList(@PathVariable("donm") int donm, @PathVariable("sigunguNm") String sigunguNm) {
 
         // 지역 코드
         String doName = "";
@@ -130,10 +142,17 @@ public class CampController {
             case 10 : doName = "제주도"; break;
             case 11 : doName = "충청남도"; break;
             case 12 : doName = "충청북도"; break;
+            case 13 : doName = "광주시"; break;
+            case 14 : doName = "세종시"; break;
+            case 15 : doName = "대구시"; break;
+            case 16 : doName = "대전시"; break;
+            case 17 : doName = "울산시"; break;
         }
 
         List<Camp> campList = campService.getcampListPetAndSig("불",doName,sigunguNm);
-        return campList.toString();
+        System.out.println("테스트 campList : "+ campList.toString());
+        return  ResponseEntity.ok(campList);
+//        return campList.toString();
     }
 
 }
