@@ -5,10 +5,8 @@ import com.camp.campingapp_backend.service.CampService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -85,7 +83,7 @@ public class CampController {
     
     // 캠핑 종류별 + 지역별
     @GetMapping("/campIndSig/{induty}/{donm}/{sigunguNm}")
-    public String CampIndutySigList(@PathVariable("induty")int induty, @PathVariable("donm") int donm, @PathVariable("sigunguNm")String sigunguNm) {
+    public ResponseEntity<List<Camp>> CampIndutySigList(@PathVariable("induty")int induty, @PathVariable("donm") int donm, @PathVariable("sigunguNm")String sigunguNm) {
 
         String camp = "";
 
@@ -119,12 +117,11 @@ public class CampController {
         }
 
         List<Camp> campList = campService.getcampListIndutyAndSig(camp,doName,sigunguNm);
-        return campList.toString();
+        return ResponseEntity.ok(campList);
     }
 
     // 애완동물 가능 + 지역별 + 세부 지역별
     @GetMapping("/campPetSig/{donm}/{sigunguNm}")
-//    public String CampPetSigList(@PathVariable("donm") int donm, @PathVariable("sigunguNm") int sigunguNm) {
         public ResponseEntity<List<Camp>> CampPetSigList(@PathVariable("donm") int donm, @PathVariable("sigunguNm") String sigunguNm) {
 
         // 지역 코드
@@ -150,9 +147,7 @@ public class CampController {
         }
 
         List<Camp> campList = campService.getcampListPetAndSig("불",doName,sigunguNm);
-        System.out.println("테스트 campList : "+ campList.toString());
         return  ResponseEntity.ok(campList);
-//        return campList.toString();
     }
 
 }
